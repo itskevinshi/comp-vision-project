@@ -1,4 +1,9 @@
 split-folders
+opencv-python
+numpy
+tqdm
+pillow
+scipy
 # Python version is optional here, but you can specify if you want consistency:
 # python==3.9
 
