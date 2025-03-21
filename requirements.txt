@@ -1,1 +1,24 @@
 split-folders
+# Python version is optional here, but you can specify if you want consistency:
+# python==3.9
+
+# PyTorch and TorchVision (ensure they match your CUDA setup if using GPU)
+torch==2.0.0
+torchvision==0.15.1
+
+# Utility libraries
+numpy==1.23.5
+pandas==1.5.3
+matplotlib==3.7.1
+seaborn==0.12.2
+Pillow==9.5.0
+
+# For metrics & classification reports
+scikit-learn==1.2.2
+
+# If you used torchinfo for model summaries (optional)
+torchinfo==1.8.0
+
+
+# If you want or need Jupyter Notebook support (optional)
+# jupyter
