@@ -1,1 +1,3 @@
 split-folders
+torch
+torchvision
