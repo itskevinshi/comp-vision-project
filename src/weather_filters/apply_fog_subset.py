@@ -100,8 +100,8 @@ def main(fog_intensity='medium', subset_percentage=10):
         subset_percentage: Percentage of images to process (default: 10%)
     """
     # Define paths
-    processed_dir = project_root / "data" / "processed"
-    augmented_weather_dir = project_root / "data" / "augmented" / "weather" / "fog"
+    processed_dir = project_root / "plant_village_limited_split" / "processed"
+    augmented_weather_dir = project_root / "plant_village_limited_split" / "augmented" / "weather" / "fog"
     
     # Create fog directories for each split
     splits = ['train', 'val', 'test']

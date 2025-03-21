@@ -263,8 +263,9 @@ def main(fog_intensity='medium'):
         fog_intensity: 'light', 'medium', or 'heavy'
     """
     # Define paths
-    processed_dir = project_root / "data" / "processed"
-    augmented_weather_dir = project_root / "data" / "augmented" / "weather" / "fog"
+    processed_dir = project_root / "plant_village_limited_split" / "processed"
+    augmented_weather_dir = project_root / "plant_village_limited_split" / "augmented" / "weather" / "fog"
+
     
     # Create fog directories for each split
     splits = ['train', 'val', 'test']

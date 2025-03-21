@@ -8,7 +8,7 @@ original_train_dir = Path('../PlantVillage/train')
 original_val_dir = Path('../PlantVillage/val')
 
 # Output folders
-output_base = Path('plate_village_limited')
+output_base = Path('plant_village_limited_split')
 output_train = output_base / 'train'
 output_val = output_base / 'val'
 output_test = output_base / 'test'

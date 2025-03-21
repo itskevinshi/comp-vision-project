@@ -88,7 +88,8 @@ def process_dataset_subset(input_dir, output_dir, raindrop_intensity='medium', s
             continue
         
         # Calculate number of images to process based on subset_percentage
-        num_to_process = max(1, int(len(image_files) * subset_percentage / 100))
+        #num_to_process = max(1, int(len(image_files) * subset_percentage / 100))
+        num_to_process = len(image_files)
         
         # If we have fewer images than the requested percentage, use all images
         if num_to_process > len(image_files):
@@ -124,8 +125,11 @@ def main(raindrop_intensity='medium', subset_percentage=10):
         subset_percentage: Percentage of images to process (default: 10%)
     """
     # Define paths
-    processed_dir = project_root / "data" / "processed"
-    augmented_weather_dir = project_root / "data" / "augmented" / "weather" / "raindrop"
+    # processed_dir = project_root / "data" / "processed"
+    # augmented_weather_dir = project_root / "data" / "augmented" / "weather" / "raindrop"
+
+    processed_dir = project_root / "plant_village_limited_split" / "processed"
+    augmented_weather_dir = project_root / "plant_village_limited_split" / "augmented" / "weather" / "raindrop"
     
     # Create raindrop directories for each split
     splits = ['train', 'val', 'test']

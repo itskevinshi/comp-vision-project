@@ -144,12 +144,18 @@ if __name__ == "__main__":
 
     pretrained_model.to(device)
     pretrained_model.eval()
+
+
+    
+
+
+
     # -----------------------------------------------------
     # 4.2 Evaluate on RAIN test set
     # -----------------------------------------------------
     # Make sure your subfolders: data/augmented/weather/rain/test/<class_subfolders>
     # match the same classes the model was trained on
-    rain_test_dir = "plant_village_limited/test"
+    rain_test_dir = "data/plant_village_limited_split/augmented/weather/raindrop/test"
 
     # Transforms: must match the author's input pipeline (e.g. 256x256)
     test_transform = transforms.Compose([
@@ -176,8 +182,9 @@ if __name__ == "__main__":
     # -----------------------------------------------------
     # 4.3 Evaluate on FOG test set
     # -----------------------------------------------------
-    fog_test_dir = "data/augmented/weather/fog/test"
+    fog_test_dir = "data/plant_village_limited_split/augmented/weather/fog/test"
     fog_test_dataset = ImageFolder(fog_test_dir, transform=test_transform)
+    class_names = fog_test_dataset.classes
     # class_names should be the same, but we can check:
     # if fog_test_dataset.classes != class_names, there's a mismatch
     fog_test_loader = DataLoader(fog_test_dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
@@ -189,5 +196,22 @@ if __name__ == "__main__":
     print(f"Fog Test Loss: {fog_results['val_loss'].item():.4f}")
 
     obtain_performance_metrics(fog_results["ground_truths"], fog_results["predictions"], class_names)
+
+
+    # -----------------------------------------------------
+    # 4.3 Evaluate on RAW test set
+    # -----------------------------------------------------
+    raw_test_dir = "data/plant_village_limited_split/processed/test"
+    raw_test_dataset = ImageFolder(raw_test_dir, transform=test_transform)
+    class_names = raw_test_dataset.classes
+    raw_test_loader = DataLoader(raw_test_dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
+    raw_test_loader = DeviceDataLoader(raw_test_loader, device)
+
+    raw_results = evaluate(pretrained_model, raw_test_loader)
+    print("=== Raw Test Set Results ===")   
+    print(f"Raw Test Accuracy: {raw_results['val_accuracy'].item():.4f}")
+    print(f"Raw Test Loss: {raw_results['val_loss'].item():.4f}")
+
+    obtain_performance_metrics(raw_results["ground_truths"], raw_results["predictions"], class_names)
 
     print("\nDone! Model evaluation on augmented images complete.")
