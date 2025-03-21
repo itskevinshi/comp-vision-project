@@ -1,1 +1,6 @@
 split-folders
+opencv-python
+numpy
+tqdm
+pillow
+scipy
